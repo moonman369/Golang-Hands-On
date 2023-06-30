@@ -23,7 +23,7 @@ func main() {
 	`, b, c, e, f)
 
 	// Explicit data type specification during declaration
-	var num int = 19328201
+	var num int = 0
 	var str string = "Bich"
 	var yn bool = false
 
