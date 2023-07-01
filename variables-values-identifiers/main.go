@@ -6,7 +6,7 @@ import "fmt"
 // The Short Declaration Operator i.e `:=` can only be used used inside a function scope
 
 // global := 90  ..........Invalid
-var global int = 90
+var global rune = 90
 
 func main() {
 	fmt.Printf("global var = %v\n", global)
