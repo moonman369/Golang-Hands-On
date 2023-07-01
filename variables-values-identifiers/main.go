@@ -23,7 +23,8 @@ func main() {
 	`, b, c, e, f)
 
 	// Explicit data type specification during declaration
-	var num int = 0
+	var num int = 123131312452
+	// var num2 int ....... Using var for zero val initialization
 	var str string = "Bich"
 	var yn bool = false
 
