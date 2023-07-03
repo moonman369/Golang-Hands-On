@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"math/rand"
+	"goHandsOn/go-tour-1-3/testpkg2"
 )
 
 func main() {
@@ -21,4 +22,7 @@ func main() {
 	fmt.Printf("phi =  %f\n", math.Phi)
 	fmt.Printf("e =  %f\n", math.E)
 	// fmt.Printf("Random Integer between 0 and 100: %d\n\n", rand.Intn(101))
+
+	something := "Nothing"
+	testpkg2.PrintSomething(something)
 }
