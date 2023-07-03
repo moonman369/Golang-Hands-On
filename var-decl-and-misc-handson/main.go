@@ -22,6 +22,11 @@ func main() {
 	fmt.Println(b)
 	fmt.Printf("x = %v; y = %v; z = %v\n", x, y, z)
 	fmt.Println(c)
-	fmt.Printf("e = %v; f = %v; g = %v\n", e, f, g)
+	fmt.Printf("e = %v; f = %v; g = %v\n\n", e, f, g)
+
+	// Printing variable values and types
+	fmt.Printf("b = %v and Type of b = %T\n", b, b)
+	fmt.Printf("x = %v and Type of x = %T\n", x, x)
+	fmt.Printf("y = %v and Type of y = %T\n", y, y)
 
 }
