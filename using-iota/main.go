@@ -6,7 +6,7 @@ import (
 
 // iota cannot be used outside a const decl block
 const (
-	i0 = iota
+	_ = iota
 	i1
 	i2
 	i3
@@ -16,7 +16,7 @@ const (
 )
 
 func main() {
-	fmt.Printf("%d \t %b\n", 1<<i0, 1<<i0)
+	fmt.Printf("%d \t %b\n", 1, 1)
 	fmt.Printf("%d \t %b\n", 1<<i1, 1<<i1)
 	fmt.Printf("%d \t %b\n", 1<<i2, 1<<i2)
 	fmt.Printf("%d \t %b\n", 1<<i3, 1<<i3)
