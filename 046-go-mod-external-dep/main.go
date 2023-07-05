@@ -14,6 +14,10 @@ func main() {
 	puppy.SetPuppyName("Cosmic Annihilation")
 	fmt.Println("Puppy name after setting: ", puppy.PuppyName)
 
+	fmt.Println("Puppy age before setting: ", puppy.PuppyAge)
+	puppy.SetPuppyAge(5)
+	fmt.Println("Puppy age after setting: ", puppy.PuppyAge)
+
 	fmt.Printf("`puppy.Bark()` call returned ==> %v\n`puppy.Barks(n int)` call returned ==> %v\n`puppy.BigBark()` call returned ==> %v\n`puppy.BigBarks(n int)` call returned ==> %v\n", singleBark, nBarks, singleGrown, nGrown)
 
 }
