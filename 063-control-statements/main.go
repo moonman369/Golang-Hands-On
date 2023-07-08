@@ -47,6 +47,7 @@ func main() {
 	} else {
 		fmt.Printf("x = %v; z = %v. Hence z < x\n", x, z)
 	}
+	// There also another thing called comma, ok idiom. Which is used to check if a collection data structure was destructured properly
 
 	// SWITCH
 	// Switch supports comparison operators other than `==` like <,>,<=,>=,!=
