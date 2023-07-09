@@ -6,7 +6,10 @@ import (
 )
 
 func main() {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 100; i++ {
+		fmt.Println(i)
+	}
+	for i := 0; i < 100; i++ {
 		checkRand(11)
 		fmt.Println()
 	}
