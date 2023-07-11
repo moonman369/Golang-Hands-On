@@ -43,5 +43,10 @@ func main() {
 	}
 
 	// Multi-dimensional slices
+	ay := []string{"Ayan", "Maiti", "Whiskey", "Steak"}
+	jd := []string{"John", "Doe", "50-50 Ethanol-Water Mixture", "Nutrition Sludge"}
+
+	xpeople := [][]string{ay, jd}
+	fmt.Println(xpeople)
 
 }
