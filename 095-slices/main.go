@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	// No len is required while decl or init
@@ -44,9 +47,68 @@ func main() {
 
 	// Multi-dimensional slices
 	ay := []string{"Ayan", "Maiti", "Whiskey", "Steak"}
-	jd := []string{"John", "Doe", "50-50 Ethanol-Water Mixture", "Nutrition Sludge"}
+	jd := []string{"John", "Doe", "50% Ethanol-Water Mixture", "Nutrition Sludge"}
 
 	xpeople := [][]string{ay, jd}
 	fmt.Println(xpeople)
 
+	// More about underlying arrays in slices
+	a := []int{0, 1, 2, 3, 4, 5}
+	b := a
+	fmt.Println("a: ", a)
+	fmt.Println("b: ", b)
+
+	fmt.Println("=========================")
+
+	a[0] = 99
+
+	// Both a and b changed because both a and b are referencing the same set of values stored once in the memory using pointers
+	fmt.Println("a: ", a)
+	fmt.Println("b: ", b)
+	// In the above example, b is a shallow copy of a
+
+	// However, to make a deep copy, we must use the copy() function
+	c := make([]int, 6)
+	copy(c, a)
+
+	a = append(a, 35, 908, 455, 65)
+
+	fmt.Println("a: ", a)
+	fmt.Println("c: ", c)
+	// c does not change with changes in a. This is because c is pointing to a copy of the underlying array and not the same one as a.
+
+	x := []float64{56, 34, 98, 13324, 4, 0, 99}
+	y := make([]float64, 7)
+	copy(y, x)
+
+	fmt.Println("x before M1():", x)
+	m1 := medianOne(x)
+	fmt.Println("x before M1():", x) // Will be sorted in place
+	fmt.Println("m1 =", m1)
+
+	fmt.Println("y before M1():", y)
+	m2 := medianTwo(y)
+	fmt.Println("y before M1():", y) // Will not be sorted in place
+	fmt.Println("m2 =", m2)
+
+}
+
+func medianOne(arr []float64) float64 {
+	sort.Float64s(arr)
+	i := len(arr) / 2
+	if len(arr)%2 == 1 {
+		return arr[i/2]
+	}
+	return (arr[i-2] + arr[i]) / 2
+}
+
+func medianTwo(arr []float64) float64 {
+	c := make([]float64, len(arr))
+	copy(c, arr)
+	sort.Float64s(c)
+	i := len(c) / 2
+	if len(c)%2 == 1 {
+		return c[i/2]
+	}
+	return (c[i-2] + c[i]) / 2
 }
