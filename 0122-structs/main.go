@@ -15,6 +15,30 @@ type secretAgent struct {
 	ltk bool
 }
 
+type engine struct {
+	hp       float32
+	capacity float32
+	mileage  float32
+	isOn     bool
+}
+
+func (e *engine) Start() {
+	e.isOn = true
+	fmt.Println("Engine has been turned on.")
+}
+
+func (e *engine) Stop() {
+	e.isOn = false
+	fmt.Println("Engine has been turned off.")
+}
+
+type car struct {
+	engine   // Embedding engine struct
+	company  string
+	model    string
+	topSpeed int
+}
+
 func main() {
 	p1 := person{
 		"John",
@@ -77,5 +101,25 @@ func main() {
 		topSpeed: 180, // If a field is skipped, the default/zero value is assigned to field
 	}
 	fmt.Printf("%#v\n", car1)
+
+	// Compositon. In Go, Functions can be associated with struct types and can be accessed using dot notation just like object methods. More over they are available to all struct types where the parent struct of the methods are embedded. This property loosely represents Object Oriented Behavior and Inheritance to some extent
+
+	car2 := car{
+		engine: engine{
+			hp:       1233.12,
+			capacity: 1.5,
+			mileage:  18,
+		},
+		company:  "Hyndai",
+		model:    "Creaate",
+		topSpeed: 109238,
+	}
+	fmt.Printf("Before starting engine: %#v\n", car2)
+
+	car2.Start()
+	fmt.Printf("Engine started: %#v\n", car2)
+
+	car2.Stop()
+	fmt.Printf("Engine stopped: %#v\n", car2)
 
 }
