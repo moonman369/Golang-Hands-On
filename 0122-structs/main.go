@@ -102,7 +102,10 @@ func main() {
 	}
 	fmt.Printf("%#v\n", car1)
 
-	// Compositon. In Go, Functions can be associated with struct types and can be accessed using dot notation just like object methods. More over they are available to all struct types where the parent struct of the methods are embedded. This property loosely represents Object Oriented Behavior and Inheritance to some extent
+	// Compositon. In Go, Functions can be associated with struct types and can be accessed using dot notation just like object methods. More over they are available to all struct types where the parent struct of the methods are embedded. This property loosely represents Object Oriented Behavior and Inheritance to some extent.
+	// In GO, You dont create a class, You create a type
+	// You don't have instances of a class, you have values of a type
+	// Architectural allignment can be applied to struct types. Efficiency is increased if fields are arranged in a descending order of type bytesize
 
 	car2 := car{
 		engine: engine{
