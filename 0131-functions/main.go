@@ -17,6 +17,13 @@ func main() {
 
 	s1 := sum(1, 2, 3, 45, 5, 7, 5, 4, 7, 7, 8)
 	fmt.Println("The sum is", s1)
+
+	// Unfurling a slice:
+	// The above method can also be called by unfurling a suitable type slice in the function args
+	x := []int{1, 3, 5, 7, 9, 11, 13, 15, 17}
+	s2 := sum(x...)
+	fmt.Println("The sum (using slice unfurling) is", s2)
+
 }
 
 func aloha(s string) string {
