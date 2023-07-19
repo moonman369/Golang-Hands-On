@@ -11,9 +11,30 @@ type person struct {
 	last  string
 }
 
+type secretAgent struct {
+	person
+	ltk bool
+}
+
 // This is the demostration of a function declaration that has a `receiver`. This results in the function to be treated as a method of the receiver type
 func (p person) introduce() {
 	fmt.Printf("Hello!! My name is %v %v\n", p.first, p.last)
+}
+
+// Example of polymorphism
+func (sa secretAgent) introduce() {
+	fmt.Printf("Names %v.... %v %v\n", sa.last, sa.first, sa.last)
+}
+
+// Interfaces can be used to implement polymorphism in go. An interface is basically signature or template containing some functions/methods. Any type with those methods are the interface's type
+
+type human interface {
+	introduce()
+}
+
+// This is a function that takes values of human type and calls the intoduce method
+func speak(h human) {
+	h.introduce()
 }
 
 func main() {
@@ -58,8 +79,21 @@ func main() {
 		last:  "Cake",
 	}
 
+	sa1 := secretAgent{
+		person: person{
+			first: "James",
+			last:  "Bond",
+		},
+		ltk: true,
+	}
+
 	p1.introduce()
 	p2.introduce()
+	sa1.introduce()
+
+	// Instead of calling the intro method, we can simply use the speak() function that takes any value of human type (person or secretAgent)
+	speak(p1)
+	speak(sa1)
 }
 
 func aloha(s string) string {
