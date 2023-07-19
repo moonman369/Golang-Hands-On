@@ -5,13 +5,25 @@ import (
 	"math/rand"
 )
 
+// This is a custom type
+type person struct {
+	first string
+	last  string
+}
+
+// This is the demostration of a function declaration that has a `receiver`. This results in the function to be treated as a method of the receiver type
+func (p person) introduce() {
+	fmt.Printf("Hello!! My name is %v %v\n", p.first, p.last)
+}
+
 func main() {
+	defer bar()
 	// General Syntax:
 	// func (r receiverType) identifier (p param/s) (return/s) {code}
 	// Receiver is optional. It is used if a func is to be declared as method for a particular type (eg struct)
 	// Everything is PASS BY VALUE in Go
 	s := aloha("moonman")
-	foo(s)
+	print(s)
 	name, dogAge := getDogYears(7)
 	fmt.Printf("%v is %v in dog years\n", name, dogAge)
 
@@ -24,13 +36,37 @@ func main() {
 	s2 := sum(x...)
 	fmt.Println("The sum (using slice unfurling) is", s2)
 
+	// Following normal order of execution foo -> bar
+	foo()
+	bar()
+
+	// DEFER STATEMENT
+	// Using `defer`. defer holds of the execution of the func before which it's used till the outer function has returned
+	// In this case, the execution of defer foo() will be held off till execution of main() has completed
+	// It is generally used when external resources like files are opened in a go program. A defer close() statement is added right after opening the file to close the file at the end of the parent function
+
+	defer foo()
+	bar()
+
+	p1 := person{
+		first: "John",
+		last:  "Doe",
+	}
+
+	p2 := person{
+		first: "Tellurium",
+		last:  "Cake",
+	}
+
+	p1.introduce()
+	p2.introduce()
 }
 
 func aloha(s string) string {
 	return fmt.Sprint("Call me ", s) // Sprint returns a string stream
 }
 
-func foo(s string) {
+func print(s string) {
 	fmt.Println(s)
 }
 
@@ -50,4 +86,11 @@ func sum(numbers /*automatically turns into a slice of given type*/ ...int) int 
 		s += v
 	}
 	return s
+}
+
+func foo() {
+	fmt.Println("foo")
+}
+func bar() {
+	fmt.Println("bar")
 }
