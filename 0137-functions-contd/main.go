@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 )
 
@@ -22,12 +23,16 @@ func (c count) String() string {
 	return fmt.Sprint("This is the number ", strconv.Itoa(int(c)))
 }
 
+func logInfo(s fmt.Stringer) {
+	log.Println("LOG FROM LINE 27", s.String())
+}
+
 func main() {
 	b := book{
 		title: "A Brief History of Time",
 	}
 	var c count = 42
 
-	fmt.Println(b)
-	fmt.Println(c)
+	logInfo(b)
+	logInfo(c)
 }
