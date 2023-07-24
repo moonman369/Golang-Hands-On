@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io"
 	"log"
@@ -32,14 +33,15 @@ func logInfo(s fmt.Stringer) {
 
 // Writer interface
 func (b book) writeOut(w io.Writer) error {
-	_, err := w.Write(append([]byte(b.title), []byte(b.author)...))
+	// _, err := w.Write(append([]byte(b.title), []byte(b.author)...))
+	_, err := w.Write([]byte(fmt.Sprintf("{\n\tTitle: %v\n\tAuthor: %v\n}", b.title, b.author)))
 	return err
 }
 
 func main() {
 	b := book{
 		title:  "A Brief History of Time",
-		author: "George R. R. Martin",
+		author: "Stephen Hawking",
 	}
 	var c count = 42
 
@@ -64,4 +66,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Writing to a bytes Buffer
+	b2 := book{
+		title:  "Song of Ice and Fire",
+		author: "George R. R. Martin",
+	}
+	var buff bytes.Buffer
+	err = b2.writeOut(&buff)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(buff.Bytes())
+	fmt.Println(buff.String())
 }

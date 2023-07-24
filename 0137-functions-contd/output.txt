@@ -1,3 +1,6 @@
 Hello Gophers!!
 This is next line tho.
-A Brief History of TimeGeorge R. R. Martin
+{
+	Title: A Brief History of Time
+	Author: Stephen Hawking
+}
