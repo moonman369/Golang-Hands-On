@@ -79,4 +79,26 @@ func main() {
 	}
 	fmt.Println(buff.Bytes())
 	fmt.Println(buff.String())
+
+	// Anonymous functions
+	// W/O p and r
+	func() {
+		fmt.Println("No one knows who i am. I am anonymous.")
+	}()
+
+	// W p W/O r
+	func(callMe string) {
+		fmt.Printf("But you can call me %v.\n", callMe)
+	}("Baba Yaga")
+
+	// w p and r
+	sum := func(nums ...int) int {
+		s := 0
+		for _, v := range nums {
+			s += v
+		}
+		return s
+	}(1, 4, 65, 3, 4, 87, 9)
+
+	fmt.Println(sum)
 }
