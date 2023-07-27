@@ -101,4 +101,17 @@ func main() {
 	}(1, 4, 65, 3, 4, 87, 9)
 
 	fmt.Println(sum)
+
+	// Function expressions
+	// Assigning function type to a variable
+	printSome := func() {
+		fmt.Println("Something")
+	}
+	printSome()
+
+	printThis := func(s string) {
+		fmt.Println(s)
+	}
+	printThis("function exp")
+
 }
