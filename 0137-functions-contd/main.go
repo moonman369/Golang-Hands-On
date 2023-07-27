@@ -114,9 +114,11 @@ func main() {
 	}
 	printThis("function exp")
 
-	counter := spCount(42)
+	// Also an example of closure
+	// The returned function has a scope/context of it's own. It's stores the state of the value and performs increment on the previous value
+	counter := incrementor(42)
 
-	fmt.Printf("%T\n", spCount)
+	fmt.Printf("%T\n", incrementor)
 	fmt.Println(counter(), counter(), counter())
 
 	//Callback: Basically passing a function as an arg
@@ -130,11 +132,14 @@ func main() {
 	fmt.Println(res1)
 	fmt.Println(res2)
 
+	n := 10
+	fmt.Printf("%v! = %v\n", n, factorial(n))
+
 }
 
 // Returning a func
 // Nested counter
-func spCount(n int) func() int {
+func incrementor(n int) func() int {
 	return func() int {
 		n++
 		return n
@@ -145,4 +150,13 @@ func spCount(n int) func() int {
 
 func doOp(a int, b int, f func(int, int) int) int {
 	return f(a, b)
+}
+
+// Recursion: A function that calls itself
+func factorial(n int) int {
+	fmt.Println("n =", n)
+	if n == 1 {
+		return 1
+	}
+	return n * factorial(n-1)
 }
