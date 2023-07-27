@@ -119,6 +119,17 @@ func main() {
 	fmt.Printf("%T\n", spCount)
 	fmt.Println(counter(), counter(), counter())
 
+	//Callback: Basically passing a function as an arg
+	add := func(a, b int) int {
+		return a + b
+	}
+
+	res1, res2 := doOp(1, 4, add), doOp(3012, 4123, func(a, b int) int {
+		return a - b
+	}) // passing functions as params
+	fmt.Println(res1)
+	fmt.Println(res2)
+
 }
 
 // Returning a func
@@ -128,4 +139,10 @@ func spCount(n int) func() int {
 		n++
 		return n
 	}
+}
+
+// Callback compatible func
+
+func doOp(a int, b int, f func(int, int) int) int {
+	return f(a, b)
 }
