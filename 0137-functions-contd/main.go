@@ -114,4 +114,18 @@ func main() {
 	}
 	printThis("function exp")
 
+	counter := spCount(42)
+
+	fmt.Printf("%T\n", spCount)
+	fmt.Println(counter(), counter(), counter())
+
+}
+
+// Returning a func
+// Nested counter
+func spCount(n int) func() int {
+	return func() int {
+		n++
+		return n
+	}
 }
