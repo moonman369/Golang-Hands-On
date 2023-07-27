@@ -34,7 +34,7 @@ func logInfo(s fmt.Stringer) {
 // Writer interface
 func (b book) writeOut(w io.Writer) error {
 	// _, err := w.Write(append([]byte(b.title), []byte(b.author)...))
-	_, err := w.Write([]byte(fmt.Sprintf("{\n\tTitle: %v\n\tAuthor: %v\n}", b.title, b.author)))
+	_, err := w.Write([]byte(fmt.Sprintf("{\n\tTitle: %v\n\tAuthor: %v\n}\n", b.title, b.author)))
 	return err
 }
 
@@ -73,6 +73,7 @@ func main() {
 		author: "George R. R. Martin",
 	}
 	var buff bytes.Buffer
+	b2.writeOut(f)
 	err = b2.writeOut(&buff)
 	if err != nil {
 		log.Fatal(err)
@@ -135,6 +136,13 @@ func main() {
 	n := 10
 	fmt.Printf("%v! = %v\n", n, factorial(n))
 
+	xb, err := readFile("output.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(xb)
+	fmt.Println(string(xb))
+
 }
 
 // Returning a func
@@ -159,4 +167,12 @@ func factorial(n int) int {
 		return 1
 	}
 	return n * factorial(n-1)
+}
+
+func readFile(fileName string) ([]byte, error) {
+	xb, err := os.ReadFile(fileName)
+	if err != nil {
+		return nil, fmt.Errorf("error in readFile func: %v", err)
+	}
+	return xb, nil
 }
