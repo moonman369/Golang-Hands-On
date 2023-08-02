@@ -13,4 +13,12 @@ func main() {
 	four times less space in UTF-8 than it would in UTF-32.
 	As a result, it loads faster.
 	`)
+
+	a := []byte("STRING")[0]
+	b := []byte("S")[0]
+
+	fmt.Printf("%T  %v", a, a)
+	fmt.Printf("%T  %v", b, b)
+	fmt.Printf("%T  %v", b == a, b == a)
+
 }
